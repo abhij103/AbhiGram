@@ -1,0 +1,22 @@
+1. Create a repo on github & then clone it locally.
+2. Add a .gitignore file with **/node_modules. This ensures there r no node modules in any of folder, 
+children folders also.
+3. Create a new angular project in the parent directory using ng new <app-name>
+4. Add angular material to ui using ng add @angular/material.
+5. Create a scss folder in src. Move styles.css to that & change it's path in angular.json
+6. Add scss reset file via npm npm i scss-reset --save. Also make box sizing border box & set 
+   font families via google fonts.
+7. Add _variables.scss for storing variables.
+8. Create material.module.ts this file is used to manage material imports.
+9. install hammer for mobile gestures. Add it to main.ts.npm install --save hammerjs
+10. A module has components,services & models.
+11. We will have Core Module(header/side nav component), Modules(it contains lazy loaded modules) & Shared Module inside app folder.
+12. Create modules with routing inside modules folders. eg ng g m auth-module --routing etc.
+13. Add lazy loading in app routing.
+14. Add angular flex layout using npm i @angular/flex-layout --save & add FlexLayoutModule to app.module
+15. Importanat Add Material module to other modules as well to have acess to Material in that module.Alternative
+    solution to this is we can have differnet material module for every module. Similar for FlexLayouModule.
+
+
+    BACKEND
+1. Refer to Node-Typescript Read.md file for setting up backend prj.

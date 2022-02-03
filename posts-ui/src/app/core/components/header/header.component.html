@@ -1,0 +1,16 @@
+<mat-toolbar color="primary" fxLayoutAlign="space-between center"> 
+    <!-- Mat Toolbar works a flexbox -->
+   <div fxLayout fxLayoutAlign="start center">
+    <button mat-icon-button (click)="toggleNav.emit()" >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div>Logo</div>
+   </div>
+    <div fxHide.xs>
+      <ul fxLayout fxLayoutGap="10px">
+        <li><a>Post</a></li>
+        <li><a>Search</a></li>
+        <li><a>Logout</a></li>
+      </ul>
+    </div>
+  </mat-toolbar>
