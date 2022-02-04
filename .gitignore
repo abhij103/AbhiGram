@@ -1,4 +1,6 @@
 **/node_modules
+# **/.env genrally env must not be uploaded , but here we're not
+# ignoring since of learning purposes.
 **/.vscode/*
 **/!.vscode/settings.json
 **/!.vscode/tasks.json

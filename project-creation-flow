@@ -20,3 +20,8 @@ children folders also.
 
     BACKEND
 1. Refer to Node-Typescript Read.md file for setting up backend prj.
+2. install nodemon for auto ts compilation by npm install --save-dev ts-node nodemon.
+3. Add a nodemon.json for auto compilation of ts files on save.
+4. add npm i --save dotenv & create .env file for accessing env vars.
+5. Create a databse via mongo website or compass. Whitelist the cluster/db for all Imp.
+6. Get the url connection and it to databse.ts .
