@@ -8,8 +8,8 @@
    </div>
     <div fxHide.xs>
       <ul fxLayout fxLayoutGap="10px">
-        <li><a>Post</a></li>
-        <li><a>Search</a></li>
+        <li><a (click)="changeRoute('/home')">Home</a></li>
+        <li><a (click)="changeRoute('/profile/user/details')">Profile </a></li>
         <li><a>Logout</a></li>
       </ul>
     </div>

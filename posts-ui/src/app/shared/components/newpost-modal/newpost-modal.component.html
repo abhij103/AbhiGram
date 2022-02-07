@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Create Post</h2>
+
+<mat-dialog-content>
+    <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Post Title</mat-label>
+          <input matInput placeholder="It feels like Summer!" autocomplete="off" [formControl]="titleInput" >
+          <mat-error *ngIf="titleInput?.touched && titleInput?.errors">
+            {{titleInput.hasError('required') ? 'Title Required' : titleInput.hasError('pattern') ? 
+            'Only ._- special chars allowed' : ' Min 5 chars required'}}
+          </mat-error>
+        </mat-form-field>
+      <div style="margin-top: 10px;">
+          <!-- Important defining type button will not try to submit form since defualt type is submit -->
+          <button type="button" mat-raised-button color="primary" (click)="filePicker.click()">
+              Pick Image
+          </button>
+          <!-- Hide Input so it looks nice -->
+         <input type="file" #filePicker  (change)="uploadFile($event)" accept="image/*">
+      </div>
+      <div class="image-preview" *ngIf="imageUrl && imageUrl!==''">
+        <img  [src]="imageUrl" class="preview">
+      </div>
+      </form>
+</mat-dialog-content>
+
+<mat-dialog-actions style="justify-content: end;" fxLayoutGap="20px">
+    <button mat-raised-button color="warn" (click)="close()">Close</button>
+    <button mat-raised-button color="primary" (click)="post()">Post</button>
+</mat-dialog-actions>

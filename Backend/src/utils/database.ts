@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import {MongoClient} from 'mongodb';
 
-let _db;
+let _db:any;
 
 export const mongoConnect = async (): Promise<void> => { 
  const client = await MongoClient.connect(
@@ -10,3 +10,9 @@ export const mongoConnect = async (): Promise<void> => {
   _db = client.db();
  return;
 };
+export const getDb = () => {
+    if (_db) {
+      return _db;
+    }
+    throw 'No database found!';
+  };

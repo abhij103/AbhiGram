@@ -1,6 +1,8 @@
-import express from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import bodyParser from 'body-parser';
-
+import fileUpload from 'express-fileupload';
+import {postRoutes} from './routes/post.route';
+import path from 'path';
 const app = express();
 //app.use(bp.json()) looks at requests where the Content-Type: application/json header is present 
 //and transforms the text-based JSON
@@ -10,6 +12,9 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use('/images', express.static(path.join(__dirname, 'images')));
+//CC __dirname points to path location of current file.
+app.use(fileUpload({createParentPath: true})); // creates parent folder/path if doesn't exists when creating  file.
 
 // Below code helps to remove CORS-ERRORS by adding some response headers.
 app.use((req, res, next) => {
@@ -25,31 +30,13 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post("/api/posts", (req, res, next) => {
-  const post = req.body;
-  console.log(post);
-  res.status(201).json({
-    message: 'Post added successfully'
-  });
-});
 
-app.get("/api/posts", (req, res, next) => {
-  const posts = [
-    {
-      id: "fadf12421l",
-      title: "First server-side post",
-      content: "This is coming from the server"
-    },
-    {
-      id: "ksajflaj132",
-      title: "Second server-side post",
-      content: "This is coming from the server!"
-    }
-  ];
-  res.status(200).json({
-    message: "Posts fetched successfully!",
-    posts: posts
-  });
-});
+app.use('/post', postRoutes);
 
+app.use((error:any, req:Request, res:Response, next:NextFunction) => { //will only come here when error occursss.
+    const status = error.statusCode || 500;
+    const message = error.message;
+    const data = error.data;
+    res.status(status).json({ message: message, data: data });
+  });
 export default app;

@@ -1,0 +1,14 @@
+<section class="profile__page">
+<div fxLayout fxLayoutAlign="center center" style="margin-top: 20px;">
+    <button mat-raised-button color="primary" (click)="openDialog()">Create Post</button>
+</div>
+<div>
+    <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+           <a mat-tab-link (click)="link='user'" [active]="link === 'user'" routerLink="user/details">User Details</a>
+           <a mat-tab-link (click)="link='posts'" [active]="link === 'posts'" routerLink="posts/user">Posts</a>
+      </nav>
+      <mat-tab-nav-panel #tabPanel><router-outlet (activate)="componentAdded($event)"></router-outlet></mat-tab-nav-panel>
+           
+</div>
+
+</section>

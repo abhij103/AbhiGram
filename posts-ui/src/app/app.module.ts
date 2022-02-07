@@ -8,6 +8,7 @@ import { MaterialModule } from './material.module';
 import { PageNotfoundComponent } from './page-notfound/page-notfound.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppCoreModule } from './core/core.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AppCoreModule } from './core/core.module';
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    AppCoreModule
+    AppCoreModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
