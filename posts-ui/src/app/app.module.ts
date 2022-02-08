@@ -8,7 +8,8 @@ import { MaterialModule } from './material.module';
 import { PageNotfoundComponent } from './page-notfound/page-notfound.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppCoreModule } from './core/core.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './modules/auth/services/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppCoreModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptorService,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

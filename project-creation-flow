@@ -16,7 +16,8 @@ children folders also.
 14. Add angular flex layout using npm i @angular/flex-layout --save & add FlexLayoutModule to app.module
 15. Importanat Add Material module to other modules as well to have acess to Material in that module.Alternative
     solution to this is we can have differnet material module for every module. Similar for FlexLayouModule.
-
+16. For interceptor we have to add it in providers of app.module.ts as
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptorService,multi:true}
 
     BACKEND
 1. Refer to Node-Typescript Read.md file for setting up backend prj.

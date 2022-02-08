@@ -1,1 +1,36 @@
-<p>auth-page works!</p>
+<div class="auth-page">
+    <form [formGroup]="authForm" (ngSubmit)="submit()">
+    <div class="form">
+            <mat-form-field class="width" appearance="fill" *ngIf="!login">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Enter your name" autocomplete="off" type="text" formControlName="name">
+                <mat-error *ngIf="authForm.controls['name']?.touched && authForm.controls['name']?.errors">
+                    {{authForm.controls['name'].hasError('required') ? 'Name Required' : 'Min 3 chars required'}}
+                  </mat-error>
+            </mat-form-field>
+            <mat-form-field class="width" appearance="fill">
+                <mat-label>Email ID</mat-label>
+                <input matInput placeholder="Enter your email id" autocomplete="off" type="email" formControlName="email">
+                <mat-error *ngIf="authForm.controls['email']?.touched && authForm.controls['email']?.errors">
+                    {{authForm.controls['email'].hasError('required') ? 'Email Required' : authForm.controls['email'].hasError('required') ?
+                       'Invalid email address' : 'Email already in use,try some other'}}
+                  </mat-error>
+            </mat-form-field>
+            <mat-form-field class="width" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="Enter your password" autocomplete="off" type="password" formControlName="password">
+                <mat-hint *ngIf="!login">Atleast 1 lower case,upper case ,digit & special character required. Min reuired length is 8</mat-hint>
+                <mat-error *ngIf="authForm.controls['name']?.touched && authForm.controls['name']?.errors">
+                    {{authForm.controls['name'].hasError('required') ? 'Password Reuired' :'Doesn't match with given pattern'}}
+                  </mat-error>
+            </mat-form-field>
+            <!-- CC demo of ng style -->
+            <div fxLayout fxLayoutAlign="flex-end center" fxLayoutGap="10px" style="width: 100%;padding-right:23px;" 
+            [ngStyle]="{'margin-top':!login? '20px' : '0px'}">
+                <button type="button" mat-stroked-button color="primary" (click)="toggle()">{{login?'Signup
+                    Instead':'Login Instead'}}</button>
+                <button type="submit" mat-raised-button color="primary">{{login?'Login':'Signup'}}</button>
+            </div>
+    </div>
+</form>
+</div>

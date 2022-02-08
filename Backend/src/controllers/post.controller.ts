@@ -5,7 +5,7 @@ import  { UploadedFile } from 'express-fileupload';
 import { v4 as uuidv4 } from 'uuid';
 import Post from "../models/post.model";
 import { validationResult } from "express-validator";
-export const createPost = async (req: Request, res: Response, next: NextFunction) => {
+export const createPost = async (req: any, res: Response, next: NextFunction) => {
     try {
         const error = validationResult(req);
         if (!error.isEmpty()) {
@@ -29,7 +29,8 @@ export const createPost = async (req: Request, res: Response, next: NextFunction
                 const title = req.body.title;
                 const tame = new Date().toISOString();
                 const fpath = 'images/' + fname;
-                const post = new Post(title, fpath, new ObjectId('507f1f77bcf86cd799439011'), tame, tame);
+               // const post = new Post(title, fpath, new ObjectId('507f1f77bcf86cd799439011'), tame, tame);
+                const post = new Post(title, fpath, new ObjectId(req.userId), tame, tame);
                 const result = await post.addPost();
                 res.status(201).json({
                     message: 'Post created successfully!',

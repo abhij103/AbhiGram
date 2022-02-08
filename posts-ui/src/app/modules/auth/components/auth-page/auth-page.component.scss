@@ -1,0 +1,28 @@
+.auth-page{
+width: 100%;
+padding: 20px;
+height: calc(100vh - 64px); //CC 64 is height of mat toolbar
+background-image: url(../../../../../assets/login-image.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+display: flex;
+justify-content: center;
+align-items: center;
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:center;
+    background-color: white;
+    border-radius: 15px;
+    min-height: 50vh;
+    width: 400px;
+    .width{
+        width:90%;
+    }
+    .mt{
+        margin-top: 20px;
+    }
+}
+}

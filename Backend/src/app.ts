@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
 import {postRoutes} from './routes/post.route';
 import path from 'path';
+import { authRoutes } from './routes/auth.route';
 const app = express();
 //app.use(bp.json()) looks at requests where the Content-Type: application/json header is present 
 //and transforms the text-based JSON
@@ -21,16 +22,16 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, DELETE, OPTIONS"
+    "GET, POST, PATCH, DELETE, OPTIONS , PUT"
   );
   next();
 });
 
-
+app.use('/auth',authRoutes)
 app.use('/post', postRoutes);
 
 app.use((error:any, req:Request, res:Response, next:NextFunction) => { //will only come here when error occursss.

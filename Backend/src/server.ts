@@ -57,7 +57,6 @@ const dbConnect = async () =>{
       server.listen(port);
       }
       catch(err){
-      console.log('1',err);
       throw err;
       }
 }
