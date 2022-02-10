@@ -35,10 +35,11 @@ uploadFile(e:Event):void{
   reader.readAsDataURL(file);
  }
  post(){
-   console.log(this.titleInput,this.fileInput);
   if(!this.titleInput.errors && !this.fileInput.errors){
-    console.log("Done!!",this.fileInput.value);
-    this.sds.createPostDb({title:this.titleInput.value,myphoto:this.fileInput.value}).subscribe();
+    this.sds.createPostDb({title:this.titleInput.value,myphoto:this.fileInput.value}).subscribe(res=>{
+      this.sds.updatePost.next(res.post);
+      this.close();
+    });
   }
  }
 }

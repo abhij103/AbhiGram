@@ -12,7 +12,7 @@
                 <mat-label>Email ID</mat-label>
                 <input matInput placeholder="Enter your email id" autocomplete="off" type="email" formControlName="email">
                 <mat-error *ngIf="authForm.controls['email']?.touched && authForm.controls['email']?.errors">
-                    {{authForm.controls['email'].hasError('required') ? 'Email Required' : authForm.controls['email'].hasError('required') ?
+                    {{authForm.controls['email'].hasError('required') ? 'Email Required' : authForm.controls['email'].hasError('email') ?
                        'Invalid email address' : 'Email already in use,try some other'}}
                   </mat-error>
             </mat-form-field>

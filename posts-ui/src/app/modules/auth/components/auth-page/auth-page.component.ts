@@ -20,7 +20,7 @@ export class AuthPageComponent implements OnInit {
       name: [''],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{5,}$/)]]
-    })
+    });
     //CC The above pattern is for password matching.
   }
   toggle(): void {
@@ -42,10 +42,8 @@ export class AuthPageComponent implements OnInit {
                 this.toggle();
             }
           }, error: res => {
-            console.log('err',res);
             if (res.error.message === 'E-Mail address already exists!') {
-              this._snackBar.open('Email already in use, try with other', 'Close',
-                { duration: 5000, horizontalPosition: 'center', verticalPosition: 'top' });
+              this.authForm.controls['email'].setErrors({duplicate:true});//CC Custom Async Error
             }else{
               this._snackBar.open('Some error occured at server,try again', 'Close',
                 { duration: 5000, horizontalPosition: 'center', verticalPosition: 'top' });
@@ -55,7 +53,7 @@ export class AuthPageComponent implements OnInit {
       }else{ //LOGIN
            this.as.loginToServer(this.authForm.value.email,this.authForm.value.password).subscribe({
             next: res => {
-              this.router.navigate(['/home']);
+              this.router.navigate(['/home/posts/1']);
             }, error: res => {
               if (res.error.message === 'A user with this email could not be found.') {
                 this._snackBar.open('A user with this email could not be found.', 'Close',

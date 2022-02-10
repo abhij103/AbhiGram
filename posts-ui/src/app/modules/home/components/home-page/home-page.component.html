@@ -1,1 +1,25 @@
-<p>home-page works!</p>
+    <div style="margin-top:10px;height: 100px;" class="search" fxLayout fxLayoutAlign="center center">
+        <form class="example-form">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Post Title</mat-label>
+              <input type="text"
+                     placeholder="Type to search post"
+                     aria-label="Number"
+                     matInput
+                     [formControl]="myControl"
+                     [matAutocomplete]="auto">
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form>
+    </div>
+    <div fxLayout.gt-xs="row wrap" fxLayout="column" fxLayoutGap="20px"
+    style="margin-top: 20px;" ngClass.gt-xs="ml-15" ngClass="ml-20">
+     <app-post-card *ngFor="let item of posts" [post]="item"></app-post-card>     
+   </div>
+
+<mat-paginator [length]="12" [pageSize]="6" [pageIndex]="currentPageIndex" (page)="onPaginate($event)" aria-label="Select page">
+</mat-paginator>

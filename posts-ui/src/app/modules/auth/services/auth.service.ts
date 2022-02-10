@@ -19,9 +19,7 @@ signup(signUpData):Observable<any>{
            "email": e,
           "password":p
          }).pipe(tap(resData => {
-           console.log('ui login',resData);
             const expirationDate = new Date(new Date().getTime() + 60*60*1000);
-            console.log("yarr",new Date(),expirationDate);
             const user = new User(resData.userId,resData.token, expirationDate);
             this.user.next(user);
             this.autoLogout(60*60*1000);

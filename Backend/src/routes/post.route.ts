@@ -1,10 +1,15 @@
 import {Router} from 'express';
-import { createPost, getPosts } from '../controllers/post.controller';
+import { createPost, getAllPosts, getPostsCount, getUserPosts } from '../controllers/post.controller';
 import { isAuthenticated } from '../middlewares/auth.mw';
 import { createPostReqChecker } from '../middlewares/post.mw';
  const router = Router();
 
 router.post('/create',isAuthenticated,createPostReqChecker,createPost);
-router.get('/getposts',getPosts);
+router.get('/userposts',
+isAuthenticated,
+getUserPosts);
+router.get('/count',isAuthenticated,
+getPostsCount)
+router.get('/all',isAuthenticated,getAllPosts);
  export {router as postRoutes};
  // Renaming befor import.

@@ -1,0 +1,28 @@
+<!-- <mat-card class="example-card"  fxFlex.gt-sm="300px;" fxFlex="80%" ngClass.gt-sm="mt">
+    <mat-card-header>
+      <mat-card-title>{{'Dummy Test'}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" 
+    alt="Photo of a Shiba Inu" ngClass.lt-md="m-auto">
+    <mat-card-content style="margin-top:5px;">
+        <span><b>Posted By:</b>{{'Dummy Test'}}</span><br>
+        <span><b>Posted On:</b>{{'Dummy Test'}}</span>
+    </mat-card-content>
+  </mat-card> -->
+
+  <!-- <mat-card class="example-card" fxFlex.gt-sm="300px;" fxFlex="100%" ngClass.gt-sm="mt"> -->
+    <mat-card class="example-card"  fxFlex="250px" ngClass.gt-xs="mt">
+    <mat-card-header>
+      <mat-card-title>{{post?.title}}</mat-card-title>
+    </mat-card-header>
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" 
+    alt="Photo of a Shiba Inu" ngClass.lt-md="m-auto"> -->
+    <!-- CC use {{imgUrl}} for dynamic url from ts file -->
+    <div *ngIf="!imgLoad" style="height: 190px;">Loading...</div>
+     <img mat-card-image src="{{post?.imageUrl}}" alt="{{post?.title}}" class="m-auto"
+      [ngClass]="{'invisible':!imgLoad}" (load)="loadFun()">
+    <mat-card-content style="margin-top:5px;">
+        <span><b>Posted By:</b>{{post?.creator.name}}</span><br>
+        <span><b>Posted On:</b>{{post?.createdAt | date}}</span>
+    </mat-card-content>
+  </mat-card>

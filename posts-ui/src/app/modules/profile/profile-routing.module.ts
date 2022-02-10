@@ -3,10 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { UserDetailsComponent } from './components/profile-page/user-details/user-details.component';
 import { UserPostsComponent } from './components/profile-page/user-posts/user-posts.component';
+import { UserResolver } from './services/user.resolver';
 
 const routes: Routes = [
   {path:'',component:ProfilePageComponent,children:[
-    {path:':tab/details',component:UserDetailsComponent},
+    {path:':tab/details',component:UserDetailsComponent,resolve:[UserResolver]},
     {path:':tab/user',component:UserPostsComponent}
   ]}
  // {path:'',component:ProfilePageComponent}

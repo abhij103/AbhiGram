@@ -1,5 +1,7 @@
 <mat-nav-list>
-    <a mat-list-item (click)="closeNav.emit()"><mat-icon>face</mat-icon> Post</a>
-    <a mat-list-item (click)="closeNav.emit()" routerLink="/profile/user/details">Profile </a>
+    <a mat-list-item (click)="closeNav.emit()" routerLink="/home/posts/1">
+        <mat-icon>home</mat-icon>Home</a>
+    <a mat-list-item (click)="closeNav.emit()" routerLink="/profile/user/details">
+        <mat-icon>face</mat-icon> Profile </a>
     <a mat-list-item (click)="closeNav.emit()">Logout </a>
  </mat-nav-list>

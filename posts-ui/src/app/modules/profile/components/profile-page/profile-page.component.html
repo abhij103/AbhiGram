@@ -4,8 +4,8 @@
 </div>
 <div>
     <nav mat-tab-nav-bar [tabPanel]="tabPanel">
-           <a mat-tab-link (click)="link='user'" [active]="link === 'user'" routerLink="user/details">User Details</a>
-           <a mat-tab-link (click)="link='posts'" [active]="link === 'posts'" routerLink="posts/user">Posts</a>
+           <a mat-tab-link  [active]="link === 'user'" routerLink="user/details">User Details</a>
+           <a mat-tab-link  [active]="link === 'posts'" routerLink="posts/user">Posts</a>
       </nav>
       <mat-tab-nav-panel #tabPanel><router-outlet (activate)="componentAdded($event)"></router-outlet></mat-tab-nav-panel>
            

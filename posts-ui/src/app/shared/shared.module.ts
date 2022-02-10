@@ -4,20 +4,25 @@ import { NewpostModalComponent } from './components/newpost-modal/newpost-modal.
 import { MaterialModule } from '../material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { PostCardComponent } from './components/post-card/post-card.component';
 
 
 
 @NgModule({
   declarations: [
-    NewpostModalComponent
+    NewpostModalComponent,
+    PostCardComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexLayoutModule
   ],
   exports:[
-    NewpostModalComponent
+    NewpostModalComponent,
+    PostCardComponent
   ]
 })
 export class SharedModule { }

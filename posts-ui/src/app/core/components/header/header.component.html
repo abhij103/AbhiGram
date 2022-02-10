@@ -1,16 +1,16 @@
 <mat-toolbar color="primary" fxLayoutAlign="space-between center"> 
     <!-- Mat Toolbar works a flexbox -->
    <div fxLayout fxLayoutAlign="start center">
-    <button mat-icon-button (click)="toggleNav.emit()" >
+    <button fxHide.gt-xs mat-icon-button (click)="toggleNav.emit()" *ngIf="isAuthenticated" >
       <mat-icon>menu</mat-icon>
     </button>
-    <div>Logo</div>
+    <div>AbhiGram</div>
    </div>
-    <div fxHide.xs>
+    <div fxHide.xs  *ngIf="isAuthenticated">
       <ul fxLayout fxLayoutGap="10px">
-        <li><a (click)="changeRoute('/home')">Home</a></li>
-        <li><a (click)="changeRoute('/profile/user/details')">Profile </a></li>
-        <li><a>Logout</a></li>
+        <li><a (click)="changeRoute('/home/posts/1')" [ngClass]="{'active-link':currentUrl.startsWith('/home')}">Home</a></li>
+        <li><a (click)="changeRoute('/profile/user/details')" [ngClass]="{'active-link':currentUrl.startsWith('/profile')}">Profile </a></li>
+        <li><a (click)="logout()">Logout</a></li>
       </ul>
     </div>
   </mat-toolbar>

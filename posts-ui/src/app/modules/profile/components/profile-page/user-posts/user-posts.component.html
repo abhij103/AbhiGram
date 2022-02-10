@@ -1,18 +1,8 @@
-<div fxLayout.gt-sm="row wrap" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center center"
+<div fxLayout.gt-xs="row wrap" fxLayout="column" fxLayoutGap="20px" ngClass.gt-xs="ml-15" ngClass="ml-20"
  style="margin-top: 20px;">
-    <mat-card class="example-card" *ngFor="let item of arr" fxFlex.gt-sm="300px;" fxFlex="80%" ngClass.gt-sm="mt">
-        <mat-card-header>
-          <mat-card-title>Shiba Inu</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" 
-        alt="Photo of a Shiba Inu" ngClass.lt-md="m-auto">
-        <!-- CC use {{imgUrl}} for dynamic url from ts file -->
-        <!-- <img mat-card-image src="{{imgUrl}}" alt="Photo of a Shiba Inu" ngClass.lt-md="m-auto"> -->
-        <mat-card-content style="margin-top:5px;">
-          <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-          </p>
-        </mat-card-content>
-      </mat-card>
+ <mat-spinner *ngIf="spinner" diameter="40">Fetching Posts...</mat-spinner>
+ <ng-container *ngIf="!spinner">
+  <app-post-card *ngFor="let item of arr;trackBy: trackByMethod" [post]="item"></app-post-card>
+ </ng-container>     
 </div>
   

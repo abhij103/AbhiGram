@@ -11,9 +11,13 @@ class Post{
       .collection('posts')
       .insertOne(this)
    }
-   static getAllPosts(){
-       const db =getDb();
-       return db.collection('posts').find().toArray();
+   static getAllPostsDb(pageNo:number){
+    const db = getDb();
+    return db.collection('posts').find().skip((pageNo-1)*6).limit(6).toArray()
+   }
+   static getTotalPostsCount(){
+    const db = getDb();
+    return db.collection('posts').find().toArray();
    }
 //    updatePost(pid){
 //       const db = getDb();
@@ -29,18 +33,12 @@ class Post{
 //      .catch(err => {
 //   })
 // }
-// static findUserPosts(uid){
-//    const db = getDb();
-//    return db
-//      .collection('posts')
-//      .find({ creator: uid }).toArray()
-//      .then(posts => {
-//        return posts;
-//      })
-//      .catch(err => {
-//        console.log(err);
-//      });
-// }
+static findUserPosts(uid:any):Promise<any>{
+   const db = getDb();
+   return db
+     .collection('posts')
+     .find({ creator: uid }).toArray()
+}
 // static findPostById(pid){
 //    const db = getDb();
 //    return db

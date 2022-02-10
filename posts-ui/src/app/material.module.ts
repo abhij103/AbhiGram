@@ -11,10 +11,16 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTableModule} from '@angular/material/table';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 @NgModule({
-    imports:[MatButtonModule,MatSidenavModule,MatToolbarModule,
-        MatIconModule,MatListModule,MatTabsModule,MatDialogModule,MatInputModule,MatFormFieldModule,MatCardModule,MatSnackBarModule],
-    exports:[MatButtonModule,MatSidenavModule,MatToolbarModule,
-        MatIconModule,MatListModule,MatTabsModule,MatDialogModule,MatInputModule,MatFormFieldModule,MatCardModule,MatSnackBarModule]
+    imports:[MatButtonModule,MatSidenavModule,MatToolbarModule,MatProgressSpinnerModule,
+        MatIconModule,MatListModule,MatTabsModule,MatDialogModule,MatInputModule,
+        MatFormFieldModule,MatCardModule,MatSnackBarModule,MatTableModule,MatPaginatorModule,MatAutocompleteModule],
+    exports:[MatButtonModule,MatSidenavModule,MatToolbarModule,MatProgressSpinnerModule,
+        MatIconModule,MatListModule,MatTabsModule,MatDialogModule,MatInputModule,
+        MatFormFieldModule,MatCardModule,MatSnackBarModule,MatTableModule,MatPaginatorModule,MatAutocompleteModule]
 })
 export class MaterialModule {}

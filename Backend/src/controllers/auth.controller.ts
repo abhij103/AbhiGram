@@ -3,6 +3,7 @@ import { validationResult } from "express-validator";
 import User from "../models/auth.model";
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import { ObjectId } from "mongodb";
 export const createUser = async (req: Request, res: Response, next: NextFunction) => {
     try{
         const errors = validationResult(req);
@@ -54,3 +55,18 @@ export const login = async (req:any, res:Response, next:NextFunction) => {
   }
 
 };
+
+export const findUser =  async (req:any, res:Response, next:NextFunction) => {
+    try{
+    const  result = await User.findUserById(new ObjectId(req.userId));
+    const {password,...returnObj} = result
+    //CC Obj destructuring.
+    res.status(200).json({ userInfo: returnObj });
+    }
+    catch(err:any){
+        if (!err.statusCode) {
+            err.statusCode = 500;
+          }
+          next(err);
+    }
+  }

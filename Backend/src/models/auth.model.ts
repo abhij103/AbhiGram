@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import { getDb } from "../utils/database";
 // const ObjectId = mongodb.ObjectId;
 class User{
@@ -10,18 +11,12 @@ class User{
       .collection('users')
       .insertOne(this)
    }
-//    static findUserById(userId){
-//     const db = getDb();
-//     return db
-//       .collection('users')
-//       .findOne({ _id: userId })
-//       .then(user => {
-//         return user;
-//       })
-//       .catch(err => {
-//         console.log(err);
-//       });
-//    }
+   static findUserById(userId:ObjectId):Promise<any>{
+    const db = getDb();
+    return db
+      .collection('users')
+      .findOne({ _id: userId })
+   }
    static async findUserByEmail(searchEmail:string):Promise<any>{
     const db = getDb();
     const user = await db.collection('users').findOne({ email : searchEmail })
