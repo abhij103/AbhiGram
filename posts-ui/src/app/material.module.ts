@@ -15,12 +15,13 @@ import {MatTableModule} from '@angular/material/table';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 @NgModule({
     imports:[MatButtonModule,MatSidenavModule,MatToolbarModule,MatProgressSpinnerModule,
-        MatIconModule,MatListModule,MatTabsModule,MatDialogModule,MatInputModule,
+        MatIconModule,MatListModule,MatTabsModule,MatDialogModule,MatInputModule,MatProgressBarModule,
         MatFormFieldModule,MatCardModule,MatSnackBarModule,MatTableModule,MatPaginatorModule,MatAutocompleteModule],
     exports:[MatButtonModule,MatSidenavModule,MatToolbarModule,MatProgressSpinnerModule,
-        MatIconModule,MatListModule,MatTabsModule,MatDialogModule,MatInputModule,
+        MatIconModule,MatListModule,MatTabsModule,MatDialogModule,MatInputModule,MatProgressBarModule,
         MatFormFieldModule,MatCardModule,MatSnackBarModule,MatTableModule,MatPaginatorModule,MatAutocompleteModule]
 })
 export class MaterialModule {}

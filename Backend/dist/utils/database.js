@@ -9,24 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.mongoConnect = void 0;
+exports.getDb = exports.mongoConnect = void 0;
+require("dotenv/config");
 const mongodb_1 = require("mongodb");
 let _db;
 const mongoConnect = () => __awaiter(void 0, void 0, void 0, function* () {
-    //   MongoClient.connect(
-    //     `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.zwbuo.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`
-    //   )
-    //     .then(client => {
-    //       console.log('Connected!');
-    //       _db = client.db();
-    //       callback();
-    //     })
-    //     .catch(err => {
-    //       console.log(err);
-    //       throw err;
-    //     });
-    const client = yield mongodb_1.MongoClient.connect(`mongodb+srv://root:98765432@cluster0.zwbuo.mongodb.net/AbhiGramDb?retryWrites=true&w=majority`);
+    const client = yield mongodb_1.MongoClient.connect(`mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.zwbuo.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`);
     _db = client.db();
     return;
 });
 exports.mongoConnect = mongoConnect;
+const getDb = () => {
+    if (_db) {
+        return _db;
+    }
+    throw 'No database found!';
+};
+exports.getDb = getDb;

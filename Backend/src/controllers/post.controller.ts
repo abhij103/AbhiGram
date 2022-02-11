@@ -37,7 +37,6 @@ export const createPost = async (req: any, res: Response, next: NextFunction) =>
                 const userPost = {...post,_id:result.insertedId.toString(),creator:{uid:user._id.toString(),email:user.email,
                     name:user.name,status:user.status
                     }};
-                    console.log('up',userPost);
                 res.status(201).json({
                     message: 'Post created successfully!',
                     post: userPost
@@ -98,7 +97,6 @@ const makeUserPosts = async(posts:any[]):Promise<any>=>{
 export const getPostsCount = async (req: any, res: Response, next: NextFunction) => {
     try {
        const posts = await Post.getTotalPostsCount();
-       console.log('mah posts',posts);
         res.status(200).json({
            count:posts.length
         });

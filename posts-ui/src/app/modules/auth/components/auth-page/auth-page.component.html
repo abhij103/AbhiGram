@@ -1,6 +1,7 @@
 <div class="auth-page">
     <form [formGroup]="authForm" (ngSubmit)="submit()">
     <div class="form">
+        <mat-progress-bar *ngIf="bar" mode="indeterminate"></mat-progress-bar>
             <mat-form-field class="width" appearance="fill" *ngIf="!login">
                 <mat-label>Name</mat-label>
                 <input matInput placeholder="Enter your name" autocomplete="off" type="text" formControlName="name">

@@ -63,7 +63,6 @@ const dbConnect = () => __awaiter(void 0, void 0, void 0, function* () {
         server.listen(port);
     }
     catch (err) {
-        console.log('1', err);
         throw err;
     }
 });

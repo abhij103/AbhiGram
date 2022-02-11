@@ -12,6 +12,7 @@ import { AuthService } from '../../services/auth.service';
 export class AuthPageComponent implements OnInit {
   login = true;
   authForm: FormGroup;
+  bar = false;
   constructor(private formBuilder: FormBuilder, private as: AuthService, private _snackBar: MatSnackBar
               ,private router:Router) { }
 
@@ -33,15 +34,18 @@ export class AuthPageComponent implements OnInit {
   }
   submit(): void {
     if (this.authForm.valid) {
+      this.bar = true;
       if (!this.login) { // Signup call
         this.as.signup(this.authForm.value).subscribe({
           next: res => {
+            this.bar = false;
             if (res.message === 'User created!') {
               this._snackBar.open('Registered Succesfully!Login Now', 'Close',
                 { duration: 5000, horizontalPosition: 'center', verticalPosition: 'top' });
                 this.toggle();
             }
           }, error: res => {
+            this.bar = false;
             if (res.error.message === 'E-Mail address already exists!') {
               this.authForm.controls['email'].setErrors({duplicate:true});//CC Custom Async Error
             }else{
@@ -53,8 +57,10 @@ export class AuthPageComponent implements OnInit {
       }else{ //LOGIN
            this.as.loginToServer(this.authForm.value.email,this.authForm.value.password).subscribe({
             next: res => {
+              this.bar = false;
               this.router.navigate(['/home/posts/1']);
             }, error: res => {
+              this.bar = false;
               if (res.error.message === 'A user with this email could not be found.') {
                 this._snackBar.open('A user with this email could not be found.', 'Close',
                   { duration: 5000, horizontalPosition: 'center', verticalPosition: 'top' });
