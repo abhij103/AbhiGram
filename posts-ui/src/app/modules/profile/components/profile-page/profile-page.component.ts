@@ -3,6 +3,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Subscriber, Subscription } from 'rxjs';
 import { NewpostModalComponent } from 'src/app/shared/components/newpost-modal/newpost-modal.component';
 import { UserService } from '../../services/user.service';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 @Component({
   selector: 'app-profile-page',
@@ -18,11 +19,16 @@ link = 'user';
   }
   //CC dynamically calls when the router-oultlet loads a component.
   componentAdded(data){
-     if(data.constructor.name === 'UserDetailsComponent'){//CC Getting class name through object
-       this.link = 'user';
-     }else{
-       this.link = 'posts';
-     }
+    //  if(data.constructor.name === 'UserDetailsComponent'){//CC Getting class name through object
+    //    this.link = 'user';
+    //  }else{
+    //    this.link = 'posts';
+    //  }
+     if(data instanceof UserDetailsComponent){//CC Getting class name through object
+      this.link = 'user';
+    }else{
+      this.link = 'posts';
+    }
   }
   openDialog():void{
     const dialogConfig = new MatDialogConfig();

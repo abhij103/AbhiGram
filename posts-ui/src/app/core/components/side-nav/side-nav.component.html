@@ -3,5 +3,5 @@
         <mat-icon>home</mat-icon>Home</a>
     <a mat-list-item (click)="closeNav.emit()" routerLink="/profile/user/details">
         <mat-icon>face</mat-icon> Profile </a>
-    <a mat-list-item (click)="closeNav.emit()">Logout </a>
+    <a mat-list-item (click)="closeNav.emit();logout()">Logout </a>
  </mat-nav-list>

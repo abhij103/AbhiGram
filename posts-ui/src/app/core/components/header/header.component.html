@@ -8,8 +8,8 @@
    </div>
     <div fxHide.xs  *ngIf="isAuthenticated">
       <ul fxLayout fxLayoutGap="10px">
-        <li><a (click)="changeRoute('/home/posts/1')" [ngClass]="{'active-link':currentUrl.startsWith('/home')}">Home</a></li>
-        <li><a (click)="changeRoute('/profile/user/details')" [ngClass]="{'active-link':currentUrl.startsWith('/profile')}">Profile </a></li>
+        <li><a (click)="changeRoute('/home/posts/1')" [ngClass]="{'active-link':currentUrl?.startsWith('/home')}">Home</a></li>
+        <li><a (click)="changeRoute('/profile/user/details')" [ngClass]="{'active-link':currentUrl?.startsWith('/profile')}">Profile </a></li>
         <li><a (click)="logout()">Logout</a></li>
       </ul>
     </div>
