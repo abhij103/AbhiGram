@@ -16,11 +16,12 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatMenuModule} from '@angular/material/menu';
 @NgModule({
-    imports:[MatButtonModule,MatSidenavModule,MatToolbarModule,MatProgressSpinnerModule,
+    imports:[MatButtonModule,MatSidenavModule,MatToolbarModule,MatProgressSpinnerModule,MatMenuModule,
         MatIconModule,MatListModule,MatTabsModule,MatDialogModule,MatInputModule,MatProgressBarModule,
         MatFormFieldModule,MatCardModule,MatSnackBarModule,MatTableModule,MatPaginatorModule,MatAutocompleteModule],
-    exports:[MatButtonModule,MatSidenavModule,MatToolbarModule,MatProgressSpinnerModule,
+    exports:[MatButtonModule,MatSidenavModule,MatToolbarModule,MatProgressSpinnerModule,MatMenuModule,
         MatIconModule,MatListModule,MatTabsModule,MatDialogModule,MatInputModule,MatProgressBarModule,
         MatFormFieldModule,MatCardModule,MatSnackBarModule,MatTableModule,MatPaginatorModule,MatAutocompleteModule]
 })

@@ -13,7 +13,15 @@
   <!-- <mat-card class="example-card" fxFlex.gt-sm="300px;" fxFlex="100%" ngClass.gt-sm="mt"> -->
     <mat-card class="example-card"  fxFlex="250px" ngClass.gt-xs="mt">
     <mat-card-header>
-      <mat-card-title>{{post?.title}}</mat-card-title>
+      <mat-card-title>{{post?.title}}   <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button></mat-card-title>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="downloadImage()">
+          <mat-icon>download</mat-icon>
+          <span>Download Image</span>
+        </button>
+      </mat-menu>
     </mat-card-header>
     <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" 
     alt="Photo of a Shiba Inu" ngClass.lt-md="m-auto"> -->

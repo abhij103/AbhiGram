@@ -18,6 +18,7 @@ children folders also.
     solution to this is we can have differnet material module for every module. Similar for FlexLayouModule.
 16. For interceptor we have to add it in providers of app.module.ts as
     {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptorService,multi:true}
+17. Fixed NavBar to top & added download via npm file-saver option
 
     BACKEND
 1. Refer to Node-Typescript Read.md file for setting up backend prj.

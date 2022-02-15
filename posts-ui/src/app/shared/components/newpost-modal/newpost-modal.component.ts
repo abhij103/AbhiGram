@@ -1,3 +1,4 @@
+import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -12,6 +13,7 @@ export class NewpostModalComponent implements OnInit {
   titleInput:FormControl;
   fileInput:FormControl;
   imageUrl;
+  uploadProgress:number = null;
   constructor(public dialogRef: MatDialogRef<NewpostModalComponent>,private sds:SharedDataserviceService) { }
 
   ngOnInit(): void {
@@ -36,9 +38,23 @@ uploadFile(e:Event):void{
  }
  post(){
   if(!this.titleInput.errors && !this.fileInput.errors){
-    this.sds.createPostDb({title:this.titleInput.value,myphoto:this.fileInput.value}).subscribe(res=>{
-      this.sds.updatePost.next(res.post);
-      this.close();
+    // this.sds.createPostDb({title:this.titleInput.value,myphoto:this.fileInput.value}).subscribe(res=>{
+    //   this.sds.updatePost.next(res.post);
+    //   this.close();
+    // });
+    this.sds.createPostDb({title:this.titleInput.value,myphoto:this.fileInput.value}).subscribe((event)=>{
+      if (event.type == HttpEventType.UploadProgress) {
+        this.uploadProgress = Math.round(100 * (event.loaded / event.total));
+      }
+      if (event.type == HttpEventType.Response) {
+        console.log('response aya',event.body);
+          this.sds.updatePost.next(event.body.post);
+          this.uploadProgress = null;
+          this.close();
+      }
+    },err=>{
+      this.uploadProgress = null;
+          this.close();
     });
   }
  }

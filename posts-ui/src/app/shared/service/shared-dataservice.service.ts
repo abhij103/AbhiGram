@@ -14,6 +14,6 @@ updatePost = new Subject<any>();
     const formData = new FormData();
     formData.append('title', postData.title);
     formData.append('myFile', postData.myphoto);
-   return this.http.post<any>(this.baseUrl+'post/create',formData)
+   return this.http.post<any>(this.baseUrl+'post/create',formData,{reportProgress:true, observe: 'events'})
   }
 }
